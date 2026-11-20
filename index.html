@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unlock Kunal's Birthday • 20/11/05 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Oswald:wght@600;700&family=Caveat:wght@700&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Clear Virat Kohli Background + Subtle Baby Pink Tint -->
+  <div class="vk-fixed-bg"></div>
+  <div class="pink-tint-overlay"></div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Top Status Bar (Shown after unlock) -->
+  <header class="navbar hidden" id="top-bar">
+    <div class="nav-brand">
+      <span class="badge-18">#18</span>
+      <span>KUNAL DEEGWAL • 20/11/05</span>
+    </div>
+    <div class="step-pills" id="step-pills">
+      <span class="step-dot active" data-step="1">1. Birthday Wish</span>
+      <span class="step-dot" data-step="2">2. Asli Sachai</span>
+      <span class="step-dot" data-step="3">3. Vibe & Media</span>
+      <span class="step-dot" data-step="4">4. Future Wishes</span>
+      <span class="step-dot" data-step="5">5. Sunflower 🌻</span>
+    </div>
+    <div class="nav-actions">
+      <button id="anthem-btn" class="btn-anthem playing" title="Toggle Birthday Anthem">
+        <span class="vinyl-disc">🎵</span>
+        <span id="anthem-label">Anthem: ON</span>
+      </button>
+      <button id="celebrate-btn" class="btn-confetti">🎉 Celebrate</button>
+    </div>
+  </header>
+
+  <!-- ==================== SCREEN 0: RETRO FLIP-CLOCK DOB LOCK ==================== -->
+  <section id="screen-0" class="screen active">
+    <div class="lock-card glass-card">
+      <div class="vk-stamp" aria-hidden="true">
+        <span class="stamp-top">KING</span>
+        <span class="stamp-num">#18</span>
+        <span class="stamp-sign">V. Kohli</span>
+      </div>
+
+      <div class="pill-tag">🔒 VIP Access Only • King Kunal</div>
+      <h1>Flip The Clock To Unlock 🎂</h1>
+
+      <!-- Live Midnight Countdown Banner -->
+      <div class="midnight-banner" id="midnight-banner">
+        <div class="midnight-label" id="midnight-label">⏳ Countdown to Kunal's Birthday (12:00 AM, Nov 20)</div>
+        <div class="midnight-timer" id="midnight-timer">
+          <div class="time-box"><span id="cd-hh">00</span><small>HRS</small></div>
+          <span class="time-colon">:</span>
+          <div class="time-box"><span id="cd-mm">00</span><small>MIN</small></div>
+          <span class="time-colon">:</span>
+          <div class="time-box"><span id="cd-ss">00</span><small>SEC</small></div>
+        </div>
+      </div>
+
+      <!-- Retro Mechanical Split-Flap Clock (DD / MM / YY) -->
+      <div class="flip-clock-stand">
+        <div class="clock-top-bridge">
+          <span class="bridge-clip left"></span>
+          <span class="bridge-clip mid-left"></span>
+          <span class="bridge-clip mid-right"></span>
+          <span class="bridge-clip right"></span>
+        </div>
+
+        <div class="flip-clock-body">
+          <div class="side-knob-group">
+            <button type="button" class="knob-btn" data-unit="dd" data-dir="1">+</button>
+            <div class="side-knob"></div>
+            <button type="button" class="knob-btn" data-unit="dd" data-dir="-1">−</button>
+          </div>
+
+          <div class="flap-unit" id="unit-dd" data-unit="dd">
+            <div class="flap-card">
+              <div class="flap-half top"><span id="dd-top">01</span></div>
+              <div class="flap-hinge"></div>
+              <div class="flap-half bottom"><span id="dd-bot">01</span></div>
+              <span class="flap-tag">DD</span>
+            </div>
+          </div>
+
+          <div class="chrome-pillar"></div>
+
+          <div class="flap-unit" id="unit-mm" data-unit="mm">
+            <div class="flap-card">
+              <div class="flap-half top"><span id="mm-top">01</span></div>
+              <div class="flap-hinge"></div>
+              <div class="flap-half bottom"><span id="mm-bot">01</span></div>
+              <span class="flap-tag">MM</span>
+            </div>
+          </div>
+
+          <div class="chrome-pillar"></div>
+
+          <div class="flap-unit" id="unit-yy" data-unit="yy">
+            <div class="flap-card">
+              <div class="flap-half top"><span id="yy-top">00</span></div>
+              <div class="flap-hinge"></div>
+              <div class="flap-half bottom"><span id="yy-bot">00</span></div>
+              <span class="flap-tag">YY</span>
+            </div>
+          </div>
+
+          <div class="side-knob-group">
+            <button type="button" class="knob-btn" data-unit="yy" data-dir="1">+</button>
+            <div class="side-knob"></div>
+            <button type="button" class="knob-btn" data-unit="yy" data-dir="-1">−</button>
+          </div>
+        </div>
+
+        <div class="flap-controls-row">
+          <div class="mini-ctrl">
+            <button type="button" class="mini-step" data-unit="dd" data-dir="-1">▼</button>
+            <span>DD</span>
+            <button type="button" class="mini-step" data-unit="dd" data-dir="1">▲</button>
+          </div>
+          <div class="mini-ctrl">
+            <button type="button" class="mini-step" data-unit="mm" data-dir="-1">▼</button>
+            <span>MM</span>
+            <button type="button" class="mini-step" data-unit="mm" data-dir="1">▲</button>
+          </div>
+          <div class="mini-ctrl">
+            <button type="button" class="mini-step" data-unit="yy" data-dir="-1">▼</button>
+            <span>YY</span>
+            <button type="button" class="mini-step" data-unit="yy" data-dir="1">▲</button>
+          </div>
+        </div>
+
+        <div class="chrome-neck"></div>
+        <div class="chrome-dome-base"></div>
+      </div>
+
+      <p class="lock-error" id="lock-error" aria-live="polite"></p>
+      <button id="unlock-btn" class="btn-primary locked-state" disabled>⏳ Locked Until 12:00 AM (20 Nov)</button>
+    </div>
+  </section>
+
+  <!-- ==================== SCREEN 1: BIRTHDAY WISH + BIG NOTE + INTERACTIVE CAKE ==================== -->
+  <section id="screen-1" class="screen">
+    <div class="screen-inner glass-card">
+      <div class="vk-stamp" aria-hidden="true">
+        <span class="stamp-top">KING</span>
+        <span class="stamp-num">#18</span>
+        <span class="stamp-sign">V. Kohli</span>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="pill-tag">👑 Page 1 of 5 • 20th November</div>
+          <h1>Happy Birthday <span class="highlight">Kunal Deegwal!</span> 🎂</h1>
+          <p class="subtitle">To the guy who isn't just a friend, par asli bhai se kam nahi hai.</p>
+
+          <div class="big-note">
+            <h3>Ek Dil Se Note Tere Liye 💌</h3>
+            <p>
+              Happy Birthday mere bhai! Aaj 20 November hai, aur honestly bolun toh tu sirf ek dost nahi hai—tu woh bhai hai jiske bina college ki aadhi life aur din ke saare faltu discussions adhure lagte hain. Chahe kitni bhi ladai ho jaaye, kitni bhi tu apni bakwas aur faltu ki baaton se dimaag kharab kare, end of the day tu mere sabse close logon mein se ek hai jiske saath hangout karne mein sabse zyada maza aata hai.
+            </p>
+            <p>
+              Tera apne loved ones ke saath jo bond hai aur har situation mein khud pe believe rakhne ka jo attitude hai—bilkul Virat Kohli ki tarah—woh tujhe sabse alag banata hai. Tu thoda (nahi, bohot zyada) aalsi zaroor hai, par dil ka ekdum saaf aur real insaan hai. Aaj tera din hai bhai, toh full energy mein enjoy kar—kyunki tera bhai hamesha tere saath khada hai!
+            </p>
+          </div>
+
+          <!-- Interactive Blow Out The Candles Cake -->
+          <div class="cake-widget" id="cake-widget" title="Click the cake to blow out the candles!">
+            <div class="cake-stage">
+              <div class="candles-row" id="candles-row">
+                <div class="candle">
+                  <div class="flame"></div>
+                  <div class="smoke"></div>
+                </div>
+                <div class="candle">
+                  <div class="flame"></div>
+                  <div class="smoke"></div>
+                </div>
+                <div class="candle">
+                  <div class="flame"></div>
+                  <div class="smoke"></div>
+                </div>
+              </div>
+              <div class="cake-tier tier-top">
+                <div class="icing-drip"></div>
+              </div>
+              <div class="cake-tier tier-bottom">
+                <span class="cake-label">KUNAL • 21</span>
+              </div>
+              <div class="cake-plate"></div>
+            </div>
+            <div class="cake-info">
+              <h4 id="cake-title">🕯️ Make a Wish & Tap The Cake!</h4>
+              <p id="cake-sub">Click the cake (or each candle) to blow them out</p>
+              <button type="button" id="relight-btn" class="relight-btn hidden">🔥 Relight Candles</button>
+            </div>
+          </div>
+
+          <div class="joke-bar">
+            <button class="joke-chip" data-msg="📢 Announcement: Sarkari School ka bacha hazir ho!">🎒 "Sarkari School ka bacha"</button>
+            <button class="joke-chip" data-msg="💬 Kunal's permanent DM opener: 'Pochko kaisi hai?' 😂">👀 "Pochko kaisi hai?"</button>
+          </div>
+          <p id="joke-toast" class="joke-toast"></p>
+        </div>
+
+        <div class="hero-media">
+          <div class="photo-frame tilt-3d tilt-right">
+            <div class="holo-glare"></div>
+            <img src="WhatsApp Image 2026-11-19 at 12.32.54.jpeg" alt="Kunal and Jatin laughing together" class="zoomable" />
+            <span class="caption">Bhai-Bhai Vibes Forever 🤝</span>
+          </div>
+          <div class="mini-video-card tilt-3d">
+            <div class="holo-glare"></div>
+            <video src="WhatsApp Video 2026-11-19 at 13.38.50.mp4" autoplay loop muted playsinline controls></video>
+            <span class="caption">Birthday Boy Moves 🕺🔥</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz Gate 1 -> 2 -->
+      <div class="quiz-box">
+        <div class="quiz-badge">🧠 Quiz Checkpoint #1 To Unlock Next Page</div>
+        <h4>Govind Dev Ji temple jaane ka plan bane, toh Kunal kitna late hota hai?</h4>
+        <div class="quiz-options" data-next="2" data-correct="2">
+          <button class="quiz-opt" data-idx="0">15 min pehle pahunch jaata hai</button>
+          <button class="quiz-opt" data-idx="1">Exact time pe</button>
+          <button class="quiz-opt" data-idx="2">45 minutes late (Fixed policy)</button>
+          <button class="quiz-opt" data-idx="3">Kabhi nahi jaata</button>
+        </div>
+        <p class="quiz-feedback"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SCREEN 2: WHAT I KNOW ABOUT KUNAL ==================== -->
+  <section id="screen-2" class="screen">
+    <div class="screen-inner glass-card">
+      <div class="vk-stamp" aria-hidden="true">
+        <span class="stamp-top">KING</span>
+        <span class="stamp-num">#18</span>
+        <span class="stamp-sign">V. Kohli</span>
+      </div>
+
+      <div class="section-top-banner">
+        <span class="pill-tag">📋 Page 2 of 5 • Scouting Report</span>
+        <h2>Kunal Ki Asli Sachai (What I Know About You)</h2>
+        <p>Virat Kohli jaisa confidence, par harkatein ekdum <strong>Sarkari School ke bache</strong> wali 😂</p>
+      </div>
+
+      <div class="about-layout">
+        <div class="about-photos">
+          <div class="photo-frame tilt-3d tilt-left">
+            <div class="holo-glare"></div>
+            <img src="WhatsApp Image 2026-11-19 at 12.32.49.jpeg" alt="Kunal iconic hairstyle" class="zoomable" />
+            <span class="caption">Peak "No Bathing Daily" Look 💇‍♂️</span>
+          </div>
+          <div class="photo-frame tilt-3d tilt-right">
+            <div class="holo-glare"></div>
+            <img src="WhatsApp Image 2026-11-19 at 13.40.3.jpeg" alt="Kunal curly hair filter" class="zoomable" />
+            <span class="caption">Sarkari School Ka Bacha Mode 🦱</span>
+          </div>
+          <div class="photo-frame tilt-3d tilt-left">
+            <div class="holo-glare"></div>
+            <img src="WhatsApp Image 2026-11-19 at 13.40.36.jpeg" alt="Kunal crying filter" class="zoomable" />
+            <span class="caption">Jab 1 Year Back Ka Result Aaya 😭</span>
+          </div>
+        </div>
+
+        <div class="facts-grid">
+          <div class="fact-card tilt-3d">
+            <div class="holo-glare"></div>
+            <div class="fact-icon">🦥</div>
+            <h4>Duniya Ka Sabse Lazy Banda</h4>
+            <p>Roz nahana iske dictionary mein optional hai, aur gym bhi tabhi jaata hai jab mood ban jaaye ("going gym, but not daily"). Har kaam ke liye 10 irrelevant bahane ready rehte hain!</p>
+          </div>
+
+          <div class="fact-card tilt-3d">
+            <div class="holo-glare"></div>
+            <div class="fact-icon">🛕</div>
+            <h4>Govind Dev Ji & 45-Min Late Policy</h4>
+            <p>Jab bhi Govind Dev Ji temple jaane ka plan bane, Kunal ka 45 minute late hona fix hai. Time ki koi value nahi, par bhakti aur bakchodi full on!</p>
+          </div>
+
+          <div class="fact-card tilt-3d">
+            <div class="holo-glare"></div>
+            <div class="fact-icon">📸</div>
+            <h4>Snap & Content Creation Obsession</h4>
+            <p>College mein entry karte hi sabse pehle snap khichna aur content creation ka keeda—camera dikha nahi ki Kunal ka pose aur photo session shuru!</p>
+          </div>
+
+          <div class="fact-card tilt-3d">
+            <div class="holo-glare"></div>
+            <div class="fact-icon">🏆</div>
+            <h4>Legendary Academic Record</h4>
+            <p>College exam mein 1 year back aur aise-aise highest records banake bhi full confidence mein ghumna—total dumbass moments ke baad bhi zero tension!</p>
+          </div>
+
+          <div class="fact-card tilt-3d">
+            <div class="holo-glare"></div>
+            <div class="fact-icon">💬</div>
+            <h4>New Girl & Faltu Ki Talks</h4>
+            <p>Hamesha kisi nayi ladki ko dhundhna, baat karna, aur phir aake apni legendary line chipkana: <em>"Pochko kaisi hai?"</em> + ghanton tak faltu ki talks!</p>
+          </div>
+
+          <div class="fact-card tilt-3d">
+            <div class="holo-glare"></div>
+            <div class="fact-icon">🍦🏏</div>
+            <h4>Ice Cream + Cricket Lover</h4>
+            <p>Ice cream ke liye kabhi mana nahi karta. Aur cricket se itna pyaar ki ab toh khelne bhi laga hai—chahe kaisa bhi khele, khud pe vishwas Kohli level ka hai!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz Gate 2 -> 3 -->
+      <div class="quiz-box">
+        <div class="quiz-badge">🧠 Quiz Checkpoint #2 To Unlock Next Page</div>
+        <h4>College mein entry karte hi Kunal ka sabse pehla kaam kya hota hai?</h4>
+        <div class="quiz-options" data-next="3" data-correct="1">
+          <button class="quiz-opt" data-idx="0">Seedha library jaake padhai karna</button>
+          <button class="quiz-opt" data-idx="1">Snap khichna & content creation shuru karna</button>
+          <button class="quiz-opt" data-idx="2">Attendance register check karna</button>
+          <button class="quiz-opt" data-idx="3">Chup-chaap class mein baithna</button>
+        </div>
+        <p class="quiz-feedback"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SCREEN 3: MEMORIES & MEDIA SHOWCASE ==================== -->
+  <section id="screen-3" class="screen">
+    <div class="screen-inner glass-card">
+      <div class="vk-stamp" aria-hidden="true">
+        <span class="stamp-top">KING</span>
+        <span class="stamp-num">#18</span>
+        <span class="stamp-sign">V. Kohli</span>
+      </div>
+
+      <div class="section-top-banner">
+        <span class="pill-tag">🎬 Page 3 of 5 • Camera Roll</span>
+        <h2>Kunal's Content Creation & Brotherhood Moments</h2>
+        <p>Har photo aur video ke peeche ek alag hi kahani hai bhai</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item tilt-3d video-highlight">
+          <div class="holo-glare"></div>
+          <video src="WhatsApp Video 2026-11-19 at 13.40.37.mp4" controls loop muted playsinline></video>
+          <div class="gallery-overlay">Kunal ka Roz ka Kaam 🍦</div>
+        </div>
+
+        <div class="gallery-item tilt-3d">
+          <div class="holo-glare"></div>
+          <img src="WhatsApp Image 2026-11-19 at 12.32.50 (1).jpeg" alt="Fest day candid" class="zoomable" />
+          <div class="gallery-overlay">Fest Days & Unlimited Bakwas</div>
+        </div>
+
+        <div class="gallery-item tilt-3d">
+          <div class="holo-glare"></div>
+          <img src="WhatsApp Image 2026-11-19 at 12.32.50.jpeg" alt="Kunal in traditional kurta" class="zoomable" />
+          <div class="gallery-overlay">Desi Kurta Look (Rare Clean Avatar)</div>
+        </div>
+
+        <div class="gallery-item tilt-3d">
+          <div class="holo-glare"></div>
+          <img src="WhatsApp Image 2026-11-19 at 12.32.56.jpeg" alt="Kunal studying on grass" class="zoomable" />
+          <div class="gallery-overlay">Rare Sight: Padhai Karte Hue ✍️</div>
+        </div>
+
+        <div class="gallery-item tilt-3d">
+          <div class="holo-glare"></div>
+          <img src="WhatsApp Image 2026-11-19 at 12.32.56 (1).jpeg" alt="Night event memory" class="zoomable" />
+          <div class="gallery-overlay">Night Vibes & "Don't Quit" Energy</div>
+        </div>
+
+        <div class="gallery-item tilt-3d video-highlight">
+          <div class="holo-glare"></div>
+          <video src="WhatsApp Video 2026-11-19 at 12.32.54.mp4" controls loop muted playsinline></video>
+          <div class="gallery-overlay">Virat Kohli Celebration Mode 🕺</div>
+        </div>
+      </div>
+
+      <!-- Quiz Gate 3 -> 4 -->
+      <div class="quiz-box">
+        <div class="quiz-badge">🧠 Quiz Checkpoint #3 To Unlock Next Page</div>
+        <h4>Apne initiative "Upscale" mein Kunal ko kis position tak grow karna hai?</h4>
+        <div class="quiz-options" data-next="4" data-correct="0">
+          <button class="quiz-opt" data-idx="0">Member se grow hoke Head banna hai 🚀</button>
+          <button class="quiz-opt" data-idx="1">Sirf WhatsApp group mein silent rehna hai</button>
+          <button class="quiz-opt" data-idx="2">Meetings mein 45 min late aana hai</button>
+          <button class="quiz-opt" data-idx="3">Chhod ke ghar pe sona hai</button>
+        </div>
+        <p class="quiz-feedback"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SCREEN 4: FUTURE WISHES FROM ME ==================== -->
+  <section id="screen-4" class="screen">
+    <div class="screen-inner glass-card">
+      <div class="vk-stamp" aria-hidden="true">
+        <span class="stamp-top">KING</span>
+        <span class="stamp-num">#18</span>
+        <span class="stamp-sign">V. Kohli</span>
+      </div>
+
+      <div class="future-top">
+        <div class="future-text">
+          <span class="pill-tag">🚀 Page 4 of 5 • Vision & Future Wishes</span>
+          <h2>Future Wishes From Your Brother</h2>
+          <p class="future-intro">
+            Masti mazak ek taraf, par as a brother meri dil se yahi dua aur wish hai tere aane wale saal ke liye:
+          </p>
+
+          <ul class="wishes-list">
+            <li>
+              <strong>🎯 Maturity & Clear Focus:</strong> Ab thoda aur mature ban ja bhai. Aalsi hona aur irrelevant reasons dena band kar—decide kar ki tujhe life mein kya karna hai aur kaise karna hai, aur uspe full focus laga de.
+            </li>
+            <li>
+              <strong>📈 Upscale Initiative — Member se Head Tak:</strong> Tera jo initiative hai <em>"Upscale"</em>, usmein tu ek member se grow hoke <strong>Head</strong> bane aur fantastically great kaam kare—yeh dekhne ka mujhe sabse zyada intezar hai!
+            </li>
+            <li>
+              <strong>📚 Studies & Time Management:</strong> Tu eventually apni studies mein bhi bohot acha karega—bas apne kaam time pe karna shuru kar de (45 min late nahi!) aur thoda meri baat zyada suna kar.
+            </li>
+            <li>
+              <strong>👨‍👩‍👦 Make Your Parents Proud:</strong> Tu itni mehnat aur success hasil kare ki tere parents ko tujhpe sabse zyada garv ho.
+            </li>
+            <li>
+              <strong>💘 Relationship Coach & Wingman Duty:</strong> Tu bilkul tension mat le—tera bhai tera permanent <em>Relationship Coach</em> bana rahega! Aur haan, badle mein tu mere liye bhi ek achi ladki zaroor dhundhega 😂.
+            </li>
+            <li>
+              <strong>🤝 Always Standing By You:</strong> Chahe hum kitni bhi ladai karein, main hamesha tere saath khada rahunga tujhe guide karne ke liye jaise hamesha karta hoon. Jo bhi ho, <strong>I am always proud of you, mere bhai!</strong>
+            </li>
+          </ul>
+
+          <div class="final-nav-actions">
+            <button type="button" class="btn-primary" id="to-sunflower-btn">🌻 One Last Surprise →</button>
+          </div>
+        </div>
+
+        <div class="future-side-media">
+          <div class="photo-frame tilt-3d">
+            <div class="holo-glare"></div>
+            <img src="WhatsApp Image 2026-11-19 at 12.32.56 (1).jpeg" alt="Brothers together" class="zoomable" />
+            <span class="caption">No Matter What, Always Got Your Back ❤️</span>
+          </div>
+          <div class="vk-quote-box tilt-3d">
+            <div class="holo-glare"></div>
+            <p>"Self-belief and hard work will always earn you success."</p>
+            <span>— King Kohli Energy For Kunal 🏏</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SCREEN 5: FULL-SCREEN SUNFLOWER FINALE ==================== -->
+  <section id="screen-5" class="screen sunflower-screen">
+    <div class="sunflower-finale-wrap">
+      <div class="sunflower-halo"></div>
+
+      <svg class="hero-sunflower" viewBox="0 0 500 500" role="img" aria-label="Golden Sunflower for Kunal">
+        <defs>
+          <radialGradient id="petalOuter" cx="50%" cy="85%" r="85%">
+            <stop offset="0%" stop-color="#f59e0b" />
+            <stop offset="45%" stop-color="#facc15" />
+            <stop offset="100%" stop-color="#fef08a" />
+          </radialGradient>
+          <radialGradient id="petalInner" cx="50%" cy="85%" r="85%">
+            <stop offset="0%" stop-color="#d97706" />
+            <stop offset="55%" stop-color="#fbbf24" />
+            <stop offset="100%" stop-color="#fde047" />
+          </radialGradient>
+          <radialGradient id="seedCore" cx="42%" cy="38%" r="62%">
+            <stop offset="0%" stop-color="#5c3317" />
+            <stop offset="55%" stop-color="#3b1d0a" />
+            <stop offset="100%" stop-color="#1f0d04" />
+          </radialGradient>
+          <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#15803d" />
+            <stop offset="50%" stop-color="#22c55e" />
+            <stop offset="100%" stop-color="#166534" />
+          </linearGradient>
+        </defs>
+
+        <path d="M250 315 Q244 410 252 500" stroke="url(#stemGrad)" stroke-width="18" stroke-linecap="round" fill="none" />
+        <path d="M248 415 C195 385, 145 405, 155 445 C185 462, 228 448, 248 425 Z" fill="url(#stemGrad)" />
+        <path d="M250 395 C305 365, 355 385, 345 425 C315 442, 272 428, 250 405 Z" fill="url(#stemGrad)" />
+
+        <g id="sf-outer-petals"></g>
+        <g id="sf-inner-petals"></g>
+
+        <circle cx="250" cy="225" r="82" fill="url(#seedCore)" stroke="#78350f" stroke-width="5" />
+        <g id="sf-seeds"></g>
+      </svg>
+
+      <h1 class="calligraphy-wish">
+        Happy Birthday Kunal,<br />
+        <span>Your favourite flower for your birthday</span>
+      </h1>
+
+      <button type="button" class="btn-secondary sunflower-replay" onclick="goToScreen(1)">↺ Replay From Beginning</button>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal for Photos -->
+  <div id="lightbox" class="lightbox" onclick="this.classList.remove('open')">
+    <img id="lightbox-img" src="" alt="Enlarged memory" />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
